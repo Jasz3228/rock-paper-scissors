@@ -8,37 +8,32 @@ let score = `Score You:${humanScore} - Computer:${computerScore}`;
 
 function getComputerChoice() {
   if (randomNumber == 0) {
-    return "Computer chose Rock";
+    return "Rock";
   } else if ( randomNumber == 1) {
-    return "Computer chose Paper";
+    return "Paper";
   } else {
-    return "Computer chose Scissors";
+    return "Scissors";
   }
 }
 
 function getHumanChoice() {
   let humanChoice = prompt("Choose Rock, Paper, or Scissors");
-  return "You chose" +  " " + humanChoice ;
+  return humanChoice;
 }
 
 function playRound(humanChoice, computerChoice) {
-  if (humanChoice == "Rock" && computerChoice == "Paper") {
-    computerScore++;
-    return "You lose! Paper beats Rock"; 
-  } else if (humanChoice === "Paper" && computerChoice === "Rock") {
-    humanScore++;
-    return "You win! Paper beats Rock";
-  } else if ( humanChoice === "Scissors" && computerChoice === "Rock") {
-    computerScore++
-    return "You lose! Rock beats scissors";
-  } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
-    humanScore++;
-    return "You win! Rock beats Scissors";
-  } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
-    computerScore++;
-    return "you lose! Scissors beats Paper";
-  } else if (humanChoice === computerChoice) {
+  if (humanChoice === computerChoice) {
     return "It's a tie!";
+  } else if (
+    (humanChoice == "rock" && computerChoice == "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
+  ) {
+    humanScore++;
+    return "You win!";
+  } else {
+    computerScore++;
+    return "You lose!";
   }
 }
 
@@ -48,4 +43,5 @@ const computerSelection = getComputerChoice();
 //log(getHumanChoice());
 //log(getComputerChoice());
 log(playRound(humanSelection.toLowerCase(), computerSelection.toLowerCase()));
+score = `Score You:$humanScore} - Computer:${computerScore}`;
 log(score);

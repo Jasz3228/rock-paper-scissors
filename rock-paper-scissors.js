@@ -30,10 +30,10 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
     humanScore++;
-    return "You win!";
+    return `You win! ${humanChoice} beats ${computerChoice}`;
   } else {
     computerScore++;
-    return "You lose!";
+    return `You lose! ${computerChoice} beats ${humanChoice}`;
   }
 }
 
@@ -43,5 +43,5 @@ const computerSelection = getComputerChoice();
 //log(getHumanChoice());
 //log(getComputerChoice());
 log(playRound(humanSelection.toLowerCase(), computerSelection.toLowerCase()));
-score = `Score You:$humanScore} - Computer:${computerScore}`;
+score = `Score You:${humanScore} - Computer:${computerScore}`;
 log(score);
